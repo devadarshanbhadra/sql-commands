@@ -1,0 +1,131 @@
+import mysql.connector
+# import mysql.connector
+#create user 'user'@'%' identified by 'password'
+mydb = mysql.connector.connect(
+  host="localhost",
+  user="abc",
+  password="password"
+)
+print(mydb)
+mycursor = mydb.cursor()
+mycursor.execute("create database ineuron")
+
+
+import mysql.connector
+# import mysql.connector
+#create user 'user'@'%' identified by 'password'
+mydb = mysql.connector.connect(
+  host="localhost",
+  user="abc",
+  password="password"
+)
+print(mydb)
+mycursor = mydb.cursor()
+mycursor.execute("create table ineuron.fsds(student_id int, firsname varchar(50), lastname varchar(50), registration date, class varchar(20), course_name varchar(50))")
+
+
+
+import mysql.connector
+# import mysql.connector
+#create user 'user'@'%' identified by 'password'
+mydb = mysql.connector.connect(
+  host="localhost",
+  user="abc",
+  password="password"
+)
+print(mydb)
+mycursor = mydb.cursor()
+mycursor.execute("""insert into ineuron.fsds values(123,'devadarshan','bhadra','2022-11-11','sql','fsds'),
+(124,'somesh','deshbandri','2022-11-11','sql','fsds'),
+(125,'yuvraj','gowda','2022-11-11','sql','fsds'),
+(126,'praveen','nutenki','2022-11-11','sql','fsds'),
+(127,'bharath','kolekar','2022-11-11','sql','fsds')""")
+
+mydb.commit()
+
+mycursor.execute("select * from ineuron.fsds")
+
+for i in mycursor:
+    print(i)
+
+
+
+import mysql.connector
+# import mysql.connector
+#create user 'user'@'%' identified by 'password'
+mydb = mysql.connector.connect(
+  host="localhost",
+  user="abc",
+  password="password"
+)
+print(mydb)
+mycursor = mydb.cursor()
+mycursor.execute("select * from ineuron.fsds")
+
+for i in mycursor:
+    print(i)
+
+mycursor.execute('select student_id, firsname, class from ineuron.fsds')
+
+for  i in mycursor:
+    print(i)
+
+mycursor.execute("select * from ineuron.fsds where student_id = 124")
+
+for i in mycursor:
+    print(i)
+
+mycursor.execute("select * from ineuron.fsds where student_id > 124")
+for i in mycursor:
+    print(i)
+
+
+mycursor.execute("select * from ineuron.fsds where firsname = 'yuvraj' and class = 'sql'")
+for i in mycursor:
+    print(i)
+
+mycursor.execute("update ineuron.fsds set lastname = 'satyanappa' where student_id = 125  ")
+mydb.commit()
+
+mycursor.execute("update ineuron.fsds set class = 'asm technologies' ")
+mydb.commit()
+
+mycursor.execute("update ineuron.fsds set course_name = 'production development' ")
+mydb.commit()
+
+mycursor.execute("delete from ineuron.fsds where lastname = 'nutenki' ")
+mydb.commit()
+
+mycursor.execute("select min(student_id) from ineuron.fsds")
+
+for i in mycursor:
+    print(i)
+
+mycursor.execute("select max(student_id) from ineuron.fsds")
+
+for i in mycursor:
+    print(i)
+
+
+mycursor.execute("select count(*) from ineuron.fsds")
+
+for i in mycursor:
+    print(i)
+
+
+mycursor.execute("update ineuron.fsds set class = 'asm graphite' where student_id between 123 and 1234")
+mydb.commit()
+
+mycursor.execute("update ineuron.fsds set class = 'asm richmonds' where student_id = 124")
+mydb.commit()
+
+mycursor.execute("update ineuron.fsds set lastname = 'bhadra' where student_id = 1234")
+mydb.commit()
+
+mycursor.execute("drop table ineuron.fsds")
+mydb.commit()
+
+mycursor.execute("drop database ineuron")
+
+
+
